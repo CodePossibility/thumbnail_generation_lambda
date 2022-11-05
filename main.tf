@@ -62,12 +62,12 @@ data "archive_file" "thumbnail_lambda_source_archive" {
   type = "zip"
 
   source_dir  = "${path.module}/src"
-  output_path = "${path.module}/my-app-deployment.zip"
+  output_path = "${path.module}/my-deployment.zip"
 }
 
 resource "aws_lambda_function" "thumbnail_lambda" {
-    function_name = "thumbnail_lambda"
-    filename = "${path.module}/my-app-deployment.zip"
+    function_name = "thumbnail_generation_lambda"
+    filename = "${path.module}/my-deployment.zip"
 
     runtime = "python3.9"
     handler = "app.lambda_handler"
